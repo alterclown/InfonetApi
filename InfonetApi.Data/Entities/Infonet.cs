@@ -13,6 +13,6 @@ namespace InfonetApi.Data.Entities
         public string City { get; set; }
         public string LanguageSkills { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public string ResumeUpload { get; set; }
+        public byte[] ResumeUpload { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace InfonetApi.Data.DbContexts
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=Infonet;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=Infonets;Integrated Security=True");
             }
         }
 
@@ -35,9 +35,8 @@ namespace InfonetApi.Data.DbContexts
 
             modelBuilder.Entity<Infonet>(entity =>
             {
-                entity.HasKey(e => e.InformationId);
-
-                entity.ToTable("Infonet");
+                entity.HasKey(e => e.InformationId)
+                    .HasName("PK_Infonet");
 
                 entity.Property(e => e.City).HasMaxLength(50);
 
@@ -48,8 +47,6 @@ namespace InfonetApi.Data.DbContexts
                 entity.Property(e => e.LanguageSkills).HasMaxLength(50);
 
                 entity.Property(e => e.Name).HasMaxLength(50);
-
-                entity.Property(e => e.ResumeUpload).HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);
